@@ -3,10 +3,13 @@
 # dependencies
 node_modules/
 
+
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
+build/
 
 # Native
 *.orig.*
@@ -30,6 +33,17 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env.production
+.env.development
+package-lock.json
 
 # typescript
 *.tsbuildinfo
+
+# Ignorar variáveis de ambiente
+.env
+
+# Ignorar logs e cache
+*.log
+*.lock
+
