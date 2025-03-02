@@ -3,7 +3,7 @@ import { API_URL } from "@env";
 
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
+  timeout: 80000,
   headers: {
     "Content-Type": "application/json",
   },
@@ -11,6 +11,7 @@ const api = axios.create({
 
 export const getUsers = async () => {
   try {
+    console.log("API_URL carregado:", API_URL);
     const response = await axios.get(`${API_URL}/users`);
     return response.data;
   } catch (error) {
@@ -25,6 +26,8 @@ export const registerUser = async (
   age: number,
   password: string
 ) => {
+  console.log("API_URL carregado:", API_URL);
+
   try {
     const response = await api.post("/users", { name, email, age, password });
     return response.data;

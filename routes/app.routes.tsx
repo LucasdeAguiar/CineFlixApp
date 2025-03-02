@@ -27,7 +27,7 @@ const StackPrincipal = () => (
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={routes.HOME}
+        name={routes.DASHBOARD}
         component={Dashboard}
         options={{ headerShown: false }}
       />

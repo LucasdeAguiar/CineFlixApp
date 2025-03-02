@@ -1,5 +1,4 @@
-const API_KEY = "33f97528a8cb63ed9e0842eb69ae1b7b";
-const BASE_URL = "https://api.themoviedb.org/3";
+import { API_KEY, BASE_URL } from "@env";
 
 export const fetchMoviesByCategory = async (
   category,
