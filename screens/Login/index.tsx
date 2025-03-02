@@ -27,7 +27,10 @@ const Login: React.FC = () => {
 
     if (user) {
       Alert.alert("Sucesso", `Bem-vindo, ${user.name}!`);
-      navigation.navigate(routes.DASHBOARD);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "MainStack" }],
+      });
     } else {
       Alert.alert("Erro", "Email ou senha incorretos.");
     }

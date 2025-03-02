@@ -8,7 +8,9 @@ import {
   Animated,
   ScrollView,
 } from "react-native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
+import type { RootStackParamList } from "../../routes/types";
 import styles from "./styles";
 import routes from "../../routes/routes";
 import {
@@ -17,7 +19,8 @@ import {
 } from "../../utils/apiUtils";
 
 const Dashboard: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<DrawerNavigationProp<RootStackParamList>>();
+
   const [popularMovies, setPopularMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -25,7 +28,6 @@ const Dashboard: React.FC = () => {
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [romanceMovies, setRomanceMovies] = useState([]);
   const [popularSeries, setPopularSeries] = useState([]);
-  const [searchAnim] = useState(new Animated.Value(0));
 
   useEffect(() => {
     fetchMoviesByCategory("popular", setPopularMovies);
@@ -60,7 +62,21 @@ const Dashboard: React.FC = () => {
     <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
+        {/* Botão do Menu para abrir o Drawer */}
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()} // Agora funciona corretamente!
+          style={styles.iconContainer}
+        >
+          <Image
+            source={require("../../assets/images/icons/menu.png")} // Ícone do menu (adicionar na pasta assets)
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+
+        {/* Título do App */}
         <Text style={styles.appTitle}>🎬 CineFlix</Text>
+
+        {/* Ícone de Busca */}
         <TouchableOpacity
           onPress={handleSearchIconPress}
           style={styles.iconContainer}
